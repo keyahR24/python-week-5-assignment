@@ -1,0 +1,65 @@
+#activity 1
+
+class Smartphone:
+    def __init__(self, brand, model, storage, battery_level):
+        self.brand = brand
+        self.model = model
+        self.storage = storage
+        self.battery_level = battery_level
+
+    def charge(self, increase):
+        self.battery_level += increase
+        if self.battery_level > 100:
+            self.battery_level = 100
+        print(f'Battery charged to {self.battery_level}%')
+
+    def install_app(self, app_size):
+        if self.storage >= app_size:
+            self.storage -= app_size
+            print("App installed successfully!")
+        else:
+            print("Insufficient storage!")
+
+class GamingSmartphone(Smartphone):
+    def __init__(self, brand, model, storage, battery_level, cooling_system):
+        super().__init__(brand, model, storage, battery_level)
+        self.cooling_system = cooling_system
+
+    def enable_high_performance_mode(self):
+        if self.cooling_system:
+            print("High performance mode enabled!")
+        else:
+            print("Cooling system required!")
+
+# Usage
+my_phone = GamingSmartphone('Rogue', 'XYZ Pro', 128, 80, True)
+my_phone.charge(10)
+my_phone.install_app(5)
+my_phone.enable_high_performance_mode()
+
+
+
+
+#activity 2
+
+class Vehicle:
+    def move(self):
+        pass  # This will be overridden in each subclass
+
+class Car(Vehicle):
+    def move(self):
+        print("Driving 🚗")
+
+class Plane(Vehicle):
+    def move(self):
+        print("Flying ✈️")
+
+class Boat(Vehicle):
+    def move(self):
+        print("Sailing ⛵")
+
+# Usage
+vehicles = [Car(), Plane(), Boat()]
+for vehicle in vehicles:
+    vehicle.move()
+
